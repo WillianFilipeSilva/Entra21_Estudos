@@ -1,0 +1,14 @@
+C:\Users\willian.silva12\Desktop\ExerciciosCSharp\bin\Debug\net8.0\ExerciciosCSharp.exe
+C:\Users\willian.silva12\Desktop\ExerciciosCSharp\bin\Debug\net8.0\ExerciciosCSharp.deps.json
+C:\Users\willian.silva12\Desktop\ExerciciosCSharp\bin\Debug\net8.0\ExerciciosCSharp.runtimeconfig.json
+C:\Users\willian.silva12\Desktop\ExerciciosCSharp\bin\Debug\net8.0\ExerciciosCSharp.dll
+C:\Users\willian.silva12\Desktop\ExerciciosCSharp\bin\Debug\net8.0\ExerciciosCSharp.pdb
+C:\Users\willian.silva12\Desktop\ExerciciosCSharp\obj\Debug\net8.0\ExerciciosCSharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\willian.silva12\Desktop\ExerciciosCSharp\obj\Debug\net8.0\ExerciciosCSharp.AssemblyInfoInputs.cache
+C:\Users\willian.silva12\Desktop\ExerciciosCSharp\obj\Debug\net8.0\ExerciciosCSharp.AssemblyInfo.cs
+C:\Users\willian.silva12\Desktop\ExerciciosCSharp\obj\Debug\net8.0\ExerciciosCSharp.csproj.CoreCompileInputs.cache
+C:\Users\willian.silva12\Desktop\ExerciciosCSharp\obj\Debug\net8.0\ExerciciosCSharp.dll
+C:\Users\willian.silva12\Desktop\ExerciciosCSharp\obj\Debug\net8.0\refint\ExerciciosCSharp.dll
+C:\Users\willian.silva12\Desktop\ExerciciosCSharp\obj\Debug\net8.0\ExerciciosCSharp.pdb
+C:\Users\willian.silva12\Desktop\ExerciciosCSharp\obj\Debug\net8.0\ExerciciosCSharp.genruntimeconfig.cache
+C:\Users\willian.silva12\Desktop\ExerciciosCSharp\obj\Debug\net8.0\ref\ExerciciosCSharp.dll
