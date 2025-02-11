@@ -236,7 +236,7 @@
 
             int potencia = 1;
 
-            for (int i = 0; i <= numero; i++)
+            for (int i = 1; i <= numero; i++)
             {
                 Console.WriteLine($"2^{i} = {potencia}");
                 potencia *= 2;
@@ -247,7 +247,13 @@
         //Peça ao usuário para inserir um número inteiro positivo e utilize um loop for para fazer uma contagem regressiva a partir desse número até 1, exibindo cada valor.
         public override void Exercicio13()
         {
+            Console.WriteLine("Digite um numero inteiro, vamos fazer uma contagem regressiva\n");
+            int numero = int.Parse(Console.ReadLine());
 
+            for (int i = numero; i > 0; i--)
+            {
+                Console.WriteLine(i);
+            }
         }
     }
 }
