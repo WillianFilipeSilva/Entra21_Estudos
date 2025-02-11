@@ -19,7 +19,6 @@
                 { 11, ("Soma de Números Pares", Exercicio11) },
                 { 12, ("Sequência de Potências", Exercicio12) },
                 { 13, ("Contagem Regressiva", Exercicio13) },
-                { 0, ("Sair", () => Environment.Exit(0)) }
             };
 
             Menu(lista);
@@ -73,7 +72,6 @@
             }
         }
 
-
         //Exercício 4: Calcular o fatorial de um número dado:
         //Elabore um programa em C# que calcule e apresente o fatorial de um número inteiro fornecido pelo usuário usando um loop for.
         public override void Exercicio4()
@@ -96,30 +94,64 @@
             Console.WriteLine($"O fatorial de {numero} é {fatorial}");
         }
 
-
         //Exercício 5: Imprimir a tabuada de multiplicação de um número dado:
         //Descreva um programa em C# que exiba a tabuada de multiplicação de um número inteiro fornecido pelo usuário, usando um loop for para calcular os resultados.
         public override void Exercicio5()
         {
+            Console.WriteLine("Digite um numero para calcular sua tabuada de multiplicação\n");
+            var numero = int.Parse(Console.ReadLine());
 
+            Console.WriteLine($"Multiplos de {numero}");
+            for (int i = 1; i <= numero; i++)
+            {
+                Console.WriteLine($"O {i} multiplo de {numero} é {i * numero}");
+            }
         }
-
 
         //Exercício 6: Contar a quantidade de números pares e ímpares em um intervalo:
         //Crie um programa em C# que conte e mostre a quantidade de números pares e ímpares no intervalo de 1 a 100, usando um loop for.
         public override void Exercicio6()
         {
+            Console.WriteLine("Digite um numero para contar a quantidade de pares e inpares no seu intervalo\n");
+            var numero = int.Parse(Console.ReadLine());
 
+            if(numero == 0)
+            {
+                Console.WriteLine($"O numero {numero}, não é valido");
+                return;
+            }
+
+            var quantidadePares = 0;
+            var quantidadeImpares = 0;
+            for (int i = 1; i <= numero; i++)
+            {
+                if (i % 3 == 0)
+                {
+                    quantidadeImpares++;
+                }
+                quantidadePares++;
+            }
+            Console.WriteLine($"Temos {quantidadePares} numeros pares, e {quantidadeImpares} numeros impares entre 0 e {numero}");
         }
-
 
         //Exercício 7: Calcular a média de um conjunto de notas:
         //Desenvolva um programa em C# que calcule a média de um conjunto de notas e exiba o resultado.
         public override void Exercicio7()
         {
+            Console.WriteLine("Vamos Calcular a média, quantas notas temos no total ?\n");
+            var numero1 = int.Parse(Console.ReadLine());
 
+            int[] numeros = new int[numero1];
+
+            var media = 0;
+            for (int i = 1; i <= numeros.Length; i ++)
+            {
+                Console.WriteLine($"Digite o {i}º Numero\n");
+                media += int.Parse(Console.ReadLine());
+            }
+            media = media/numeros.Length;
+            Console.WriteLine($"A média é {media}");
         }
-
 
         //Exercício 8: Imprimir os primeiros 20 termos da sequência de Fibonacci:
         //Escreva um programa em C# que utilize um loop for para calcular e imprimir os primeiros 20 termos da sequência de Fibonacci.
@@ -155,7 +187,6 @@
 
             Console.WriteLine($"O numero:{numero} é primo");
         }
-
 
         //Exercício 10: Criar um padrão de triângulo utilizando asteriscos:
         //Elabore um programa em C# que utilize loops for aninhados para criar e exibir um padrão de triângulo formado por asteriscos.
@@ -196,16 +227,21 @@
             Console.WriteLine($"A soma dos numeros pares de 1 a 100 é: {soma}");
         }
 
-
-
         //Exercício 12: Sequência de Potências
         //Crie um programa que peça ao usuário para inserir um número inteiro e, em seguida, exiba a sequência de potências de 2 até a potência correspondente ao número inserido.
         public override void Exercicio12()
         {
+            Console.WriteLine("Digite um numero inteiro, vamos exibir a sequencia de potencias de 2 até o numero");
+            int numero = int.Parse(Console.ReadLine());
 
+            int potencia = 1;
+
+            for (int i = 0; i <= numero; i++)
+            {
+                Console.WriteLine($"2^{i} = {potencia}");
+                potencia *= 2;
+            }
         }
-
-
 
         //Exercício 13: Contagem Regressiva
         //Peça ao usuário para inserir um número inteiro positivo e utilize um loop for para fazer uma contagem regressiva a partir desse número até 1, exibindo cada valor.

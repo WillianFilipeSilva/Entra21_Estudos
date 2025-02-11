@@ -21,11 +21,11 @@ namespace ExerciciosCSharp
 
             //Exercicios de repetição
             EstrurutasDeRepeticaoFor repeticao = new();
-            //repeticao.Executar();
+            repeticao.Executar();
 
            //Estruturas de Repetição
            EstruturasDeRepeticaoWhileDoWhile estruturasDeRepeticao = new();
-            estruturasDeRepeticao.Executar();
+            //estruturasDeRepeticao.Executar();
         }
     }
 }
