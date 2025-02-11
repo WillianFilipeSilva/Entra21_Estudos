@@ -20,12 +20,12 @@ namespace ExerciciosCSharp
             //estruturasDeSelecao.Executar();
 
             //Exercicios de repetição
-            EstrurutasDeRepeticaoFor repeticao = new();
-            repeticao.Executar();
+            EstrurutasDeRepeticaoFor estrurutasDeRepeticaoFor = new();
+            //estrurutasDeRepeticaoFor.Executar();
 
-           //Estruturas de Repetição
-           EstruturasDeRepeticaoWhileDoWhile estruturasDeRepeticao = new();
-            //estruturasDeRepeticao.Executar();
+            //Estruturas de Repetição
+            EstruturasDeRepeticaoWhileDoWhile estruturasDeRepeticaoWhileDoWhile = new();
+            estruturasDeRepeticaoWhileDoWhile.Executar();
         }
     }
 }

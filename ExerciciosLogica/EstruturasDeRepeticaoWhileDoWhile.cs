@@ -116,7 +116,16 @@
         // Exercício 4 - Soma de Números: Some uma sequência de números informados pelo usuário até que ele digite 0.
         public override void Exercicio4() 
         {
-            
+            Console.WriteLine("Vamos somar os proximos numeros, digite 0 para parar a inserção");
+
+            var numero = 1;
+            var soma = 0;
+
+            while(numero != 0){
+                numero = int.Parse(Console.ReadLine());
+                soma += numero;
+            }
+            Console.WriteLine($"A soma dos numeros é: {soma}");
         }
 
         // Exercício 5 - Fatorial: Calcule e exiba o fatorial de um número informado pelo usuário.
