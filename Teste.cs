@@ -11,21 +11,28 @@ namespace ExerciciosCSharp
     {
         public static void Main(string[] args)
         {
-            //Variáveis
-            Variaveis variaveis = new();
-            //variaveis.Executar();
+            try
+            {
+                //Variáveis
+                Variaveis variaveis = new();
+                //variaveis.Executar();
 
-            //EstruturasDeSelecao
-            EstruturasDeSelecao estruturasDeSelecao = new();
-            //estruturasDeSelecao.Executar();
+                //EstruturasDeSelecao
+                EstruturasDeSelecao estruturasDeSelecao = new();
+                //estruturasDeSelecao.Executar();
 
-            //Exercicios de repetição
-            EstrurutasDeRepeticaoFor estrurutasDeRepeticaoFor = new();
-            //estrurutasDeRepeticaoFor.Executar();
+                //Exercicios de repetição
+                EstrurutasDeRepeticaoFor estrurutasDeRepeticaoFor = new();
+                //estrurutasDeRepeticaoFor.Executar();
 
-            //Estruturas de Repetição
-            EstruturasDeRepeticaoWhileDoWhile estruturasDeRepeticaoWhileDoWhile = new();
-            estruturasDeRepeticaoWhileDoWhile.Executar();
+                //Estruturas de Repetição
+                EstruturasDeRepeticaoWhileDoWhile estruturasDeRepeticaoWhileDoWhile = new();
+                estruturasDeRepeticaoWhileDoWhile.Executar();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"ERRO: {ex.Message}");
+            }
         }
     }
 }

@@ -4,25 +4,32 @@
     {
         public void Executar()
         {
-            var lista = new Dictionary<int, (string, Action)>
+            try
             {
-                { 1, ("Imprimir números de 1 a 10", Exercicio1) },
-                { 2, ("Calcular a soma dos primeiros 100 números inteiros", Exercicio2) },
-                { 3, ("Imprimir os números pares de 1 a 20", Exercicio3) },
-                { 4, ("Calcular o fatorial de um número dado", Exercicio4) },
-                { 5, ("Imprimir a tabuada de multiplicação de um número dado", Exercicio5) },
-                { 6, ("Contar a quantidade de números pares e ímpares em um intervalo", Exercicio6) },
-                { 7, ("Calcular a média de um conjunto de notas", Exercicio7) },
-                { 8, ("Imprimir os primeiros 20 termos da sequência de Fibonacci", Exercicio8) },
-                { 9, ("Verificar se um número é primo", Exercicio9) },
-                { 10, ("Criar um padrão de triângulo utilizando asteriscos", Exercicio10) },
-                { 11, ("Soma de Números Pares", Exercicio11) },
-                { 12, ("Sequência de Potências", Exercicio12) },
-                { 13, ("Contagem Regressiva", Exercicio13) },
-            };
+                var lista = new Dictionary<int, (string, Action)>
+                {
+                    { 1, ("Imprimir números de 1 a 10", Exercicio1) },
+                    { 2, ("Calcular a soma dos primeiros 100 números inteiros", Exercicio2) },
+                    { 3, ("Imprimir os números pares de 1 a 20", Exercicio3) },
+                    { 4, ("Calcular o fatorial de um número dado", Exercicio4) },
+                    { 5, ("Imprimir a tabuada de multiplicação de um número dado", Exercicio5) },
+                    { 6, ("Contar a quantidade de números pares e ímpares em um intervalo", Exercicio6) },
+                    { 7, ("Calcular a média de um conjunto de notas", Exercicio7) },
+                    { 8, ("Imprimir os primeiros 20 termos da sequência de Fibonacci", Exercicio8) },
+                    { 9, ("Verificar se um número é primo", Exercicio9) },
+                    { 10, ("Criar um padrão de triângulo utilizando asteriscos", Exercicio10) },
+                    { 11, ("Soma de Números Pares", Exercicio11) },
+                    { 12, ("Sequência de Potências", Exercicio12) },
+                    { 13, ("Contagem Regressiva", Exercicio13) },
+                };
 
-            Menu(lista);
-        }
+                Menu(lista);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }       
         
         //Looping para todos os numeros multiplos de 5 até 20
         public void Exercicio()

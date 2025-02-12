@@ -15,30 +15,45 @@ namespace ExerciciosCSharp.ExerciciosLogica
 
             while (opcao != 0)
             {
-                Console.WriteLine("Selecione o exercício que deseja executar:");
-
-                foreach (var item in opcoes)
+                try
                 {
-                    Console.WriteLine($"{item.Key}. {item.Value.Item1}");
+                    Console.WriteLine("Selecione o exercício que deseja executar:");
+
+                    foreach (var item in opcoes)
+                    {
+                        Console.WriteLine($"{item.Key}. {item.Value.Item1}");
+                    }
+
+                    Console.WriteLine("0. Sair");
+                    Console.Write("Digite a opção desejada: ");
+
+                    if (!int.TryParse(Console.ReadLine(), out opcao))
+                    {
+                        Console.WriteLine("Entrada inválida. Tente novamente.");
+                        continue;
+                    }
+
+                    if (opcoes.ContainsKey(opcao))
+                    {
+                        try
+                        {
+                            opcoes[opcao].Item2();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Erro ao executar a opção {opcao}: {ex.Message}");
+                        }
+                    }
+                    else if (opcao != 0)
+                    {
+                        Console.WriteLine("Opção inválida. Tente novamente.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Ocorreu um erro inesperado: {ex.Message}");
                 }
 
-                Console.WriteLine("0. Sair");
-                Console.Write("Digite a opção desejada: ");
-
-                if (!int.TryParse(Console.ReadLine(), out opcao))
-                {
-                    Console.WriteLine("Entrada inválida. Tente novamente.");
-                    continue;
-                }
-
-                if (opcoes.ContainsKey(opcao))
-                {
-                    opcoes[opcao].Item2();
-                }
-                else if (opcao != 0)
-                {
-                    Console.WriteLine("Opção inválida. Tente novamente.");
-                }
                 Console.WriteLine("Pressione qualquer tecla para reiniciar o programa.");
                 Console.ReadLine();
             }
