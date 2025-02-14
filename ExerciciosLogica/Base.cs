@@ -9,6 +9,10 @@ namespace ExerciciosCSharp.ExerciciosLogica
 {
     public class Base
     {
+        public Dictionary<int, (string, Action)> lista = new();
+
+        public virtual void Executar() { }
+
         public virtual void Menu(Dictionary<int, (string, Action)> opcoes)
         {
             int opcao = -1;

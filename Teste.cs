@@ -27,7 +27,11 @@ namespace ExerciciosCSharp
 
                 //Estruturas de Repetição
                 EstruturasDeRepeticaoWhileDoWhile estruturasDeRepeticaoWhileDoWhile = new();
-                estruturasDeRepeticaoWhileDoWhile.Executar();
+                //estruturasDeRepeticaoWhileDoWhile.Executar();
+
+                //Funções
+                Funcoes funcoes = new();
+                funcoes.Executar();
             }
             catch (Exception ex)
             {

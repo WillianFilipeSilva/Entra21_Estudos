@@ -6,7 +6,7 @@
         {
             try
             {
-                var lista = new Dictionary<int, (string, Action)>
+                lista = new Dictionary<int, (string, Action)>
                 {
                     { 1, ("Imprimir números de 1 a 10", Exercicio1) },
                     { 2, ("Calcular a soma dos primeiros 100 números inteiros", Exercicio2) },
