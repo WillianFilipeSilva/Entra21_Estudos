@@ -31,7 +31,7 @@ namespace ExerciciosCSharp
 
                 //Funções
                 Funcoes funcoes = new();
-                funcoes.Executar();
+                //funcoes.Executar();
             }
             catch (Exception ex)
             {
