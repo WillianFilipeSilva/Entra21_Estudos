@@ -44,10 +44,12 @@
             try
             {
                 Console.Write("Digite o primeiro número: ");
-                int a = int.Parse(Console.ReadLine());
+                int numero1 = int.Parse(Console.ReadLine());
+
                 Console.Write("Digite o segundo número: ");
-                int b = int.Parse(Console.ReadLine());
-                int soma = a + b;
+                int numero2 = int.Parse(Console.ReadLine());
+
+                int soma = numero1 + numero2;
                 Console.WriteLine($"A soma é: {soma}");
             }
             catch (Exception ex)
@@ -62,13 +64,14 @@
             try
             {
                 Console.Write("Digite um número: ");
-                int n = int.Parse(Console.ReadLine());
+                int numero = int.Parse(Console.ReadLine());
+
                 long fatorial = 1;
-                for (int i = 1; i <= n; i++)
+                for (int i = 1; i <= numero; i++)
                 {
                     fatorial *= i;
                 }
-                Console.WriteLine($"O fatorial de {n} é: {fatorial}");
+                Console.WriteLine($"O fatorial de {numero} é: {fatorial}");
             }
             catch (Exception ex)
             {
@@ -82,22 +85,23 @@
             try
             {
                 Console.Write("Digite um número: ");
-                int num = int.Parse(Console.ReadLine());
-                bool isPrimo = true;
-                if (num <= 1)
-                    isPrimo = false;
+                int numero = int.Parse(Console.ReadLine());
+
+                bool ehPrimo = true;
+                if (numero <= 1)
+                    ehPrimo = false;
                 else
                 {
-                    for (int i = 2; i <= Math.Sqrt(num); i++)
+                    for (int i = 2; i * i <= numero; i++)
                     {
-                        if (num % i == 0)
+                        if (numero % i == 0)
                         {
-                            isPrimo = false;
+                            ehPrimo = false;
                             break;
                         }
                     }
                 }
-                Console.WriteLine(isPrimo ? $"{num} é primo." : $"{num} não é primo.");
+                Console.WriteLine(ehPrimo ? $"{numero} é primo." : $"{numero} não é primo.");
             }
             catch (Exception ex)
             {
@@ -111,23 +115,23 @@
             try
             {
                 Console.Write("Digite os números separados por espaço: ");
-                string input = Console.ReadLine();
-                string[] partes = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                string numerosString = Console.ReadLine();
+
+                string[] partes = numerosString.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                 if (partes.Length == 0)
                 {
-                    Console.WriteLine("Nenhum número foi fornecido.");
-                    return;
+                    throw new Exception("Nenhum número foi fornecido.");
                 }
-                int[] nums = new int[partes.Length];
+                int[] numeros = new int[partes.Length];
                 for (int i = 0; i < partes.Length; i++)
                 {
-                    nums[i] = int.Parse(partes[i]);
+                    numeros[i] = int.Parse(partes[i]);
                 }
-                int maior = nums[0];
-                for (int i = 1; i < nums.Length; i++)
+                int maior = numeros[0];
+                for (int i = 1; i < numeros.Length; i++)
                 {
-                    if (nums[i] > maior)
-                        maior = nums[i];
+                    if (numeros[i] > maior)
+                        maior = numeros[i];
                 }
                 Console.WriteLine($"O maior valor da lista é: {maior}");
             }
@@ -142,14 +146,18 @@
         {
             try
             {
-                Console.Write("Digite uma string: ");
-                string str = Console.ReadLine();
-                string invertida = "";
-                for (int i = str.Length - 1; i >= 0; i--)
+                Console.Write("Digite um texto: ");
+                string texto = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(texto))
+                    throw new Exception("Nenhum texto foi fornecido.");
+
+                string textoInvertido = "";
+                for (int i = texto.Length - 1; i >= 0; i--)
                 {
-                    invertida += str[i];
+                    textoInvertido += texto[i];
                 }
-                Console.WriteLine($"String invertida: {invertida}");
+                Console.WriteLine($"Texto invertida: {textoInvertido}");
             }
             catch (Exception ex)
             {
@@ -163,21 +171,22 @@
             try
             {
                 Console.Write("Digite os números reais separados por espaço: ");
-                string input = Console.ReadLine();
-                string[] partes = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                if (partes.Length == 0)
-                {
-                    Console.WriteLine("Nenhum número foi fornecido.");
-                    return;
-                }
+                string numero = Console.ReadLine();
+
+                string[] numerosSeparados = numero.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+                if (numerosSeparados.Length == 0)
+                    throw new Exception("Nenhum número foi fornecido.");
+
                 double soma = 0;
-                double[] nums = new double[partes.Length];
-                for (int i = 0; i < partes.Length; i++)
+                double[] numeros = new double[numerosSeparados.Length];
+                for (int i = 0; i < numerosSeparados.Length; i++)
                 {
-                    nums[i] = double.Parse(partes[i]);
-                    soma += nums[i];
+                    numeros[i] = double.Parse(numerosSeparados[i]);
+                    soma += numeros[i];
                 }
-                double media = soma / partes.Length;
+
+                double media = soma / numerosSeparados.Length;
                 Console.WriteLine($"A média dos números é: {media}");
             }
             catch (Exception ex)
@@ -191,15 +200,20 @@
         {
             try
             {
-                Console.Write("Digite uma string: ");
-                string str = Console.ReadLine();
+                Console.Write("Digite uma texto: ");
+                string texto = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(texto))
+                    throw new Exception("Nenhum texto foi fornecido.");
+
                 string reverso = "";
-                for (int i = str.Length - 1; i >= 0; i--)
+                for (int i = texto.Length - 1; i >= 0; i--)
                 {
-                    reverso += str[i];
+                    reverso += texto[i];
                 }
-                bool isPalindromo = str.Equals(reverso, StringComparison.OrdinalIgnoreCase);
-                Console.WriteLine(isPalindromo ? "A string é um palíndromo." : "A string não é um palíndromo.");
+
+                bool isPalindromo = texto.Equals(reverso, StringComparison.OrdinalIgnoreCase);
+                Console.WriteLine(isPalindromo ? $"O {texto} é um palíndromo." : $"O {texto} não é um palíndromo.");
             }
             catch (Exception ex)
             {
@@ -214,6 +228,7 @@
             {
                 Console.Write("Digite a temperatura em Celsius: ");
                 double celsius = double.Parse(Console.ReadLine());
+
                 double fahrenheit = (celsius * 9 / 5) + 32;
                 Console.WriteLine($"{celsius}°C equivalem a {fahrenheit}°F.");
             }
@@ -228,15 +243,20 @@
         {
             try
             {
-                Console.Write("Digite as strings separadas por vírgula: ");
+                Console.Write("Digite os textos separados por vírgula: ");
                 string[] strings = Console.ReadLine().Split(',', StringSplitOptions.RemoveEmptyEntries);
+
+                if (strings.Length == 0)
+                    throw new Exception("Nenhum texto foi fornecido.");
+
                 int count = 0;
+
                 foreach (var s in strings)
                 {
                     if (s.Trim().Length > 5)
                         count++;
                 }
-                Console.WriteLine($"Quantidade de strings com mais de 5 caracteres: {count}");
+                Console.WriteLine($"Quantidade de textos com mais de 5 caracteres: {count}");
             }
             catch (Exception ex)
             {
@@ -250,11 +270,22 @@
             try
             {
                 Console.Write("Digite o primeiro número: ");
-                int a = int.Parse(Console.ReadLine());
+                int numero1 = int.Parse(Console.ReadLine());
+
                 Console.Write("Digite o segundo número: ");
-                int b = int.Parse(Console.ReadLine());
-                int mdc = MDC(a, b);
-                Console.WriteLine($"O MDC de {a} e {b} é: {mdc}");
+                int numero2 = int.Parse(Console.ReadLine());
+
+                if (numero1 == 0 && numero2 == 0)
+                {
+                    Console.WriteLine("O MDC não é definido quando ambos os números são zero.");
+                    return;
+                }
+
+                int originalNumero1 = numero1;
+                int originalNumero2 = numero2;
+
+                int mdc = CalcularMDC(numero1, numero2);
+                Console.WriteLine($"O MDC de {originalNumero1} e {originalNumero2} é: {mdc}");
             }
             catch (Exception ex)
             {
@@ -262,16 +293,14 @@
             }
         }
 
-        // Função auxiliar para calcular o MDC usando o algoritmo de Euclides.
         private int CalcularMDC(int numero1, int numero2)
         {
-            numero1 = Math.Abs(numero1);
-            numero2 = Math.Abs(numero2);
+            numero1 = numero1 < 0 ? -numero1 : numero1;
+            numero2 = numero2 < 0 ? -numero2 : numero2;
 
             while (numero2 != 0)
             {
                 int resto = numero1 % numero2;
-
                 numero1 = numero2;
                 numero2 = resto;
             }
@@ -285,18 +314,21 @@
             try
             {
                 Console.Write("Digite os números inteiros separados por espaço: ");
-                string input = Console.ReadLine();
-                string[] partes = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                List<int> nums = new List<int>();
+                string numerosString = Console.ReadLine();
+
+                string[] partes = numerosString.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+                List<int> numeros = new List<int>();
                 for (int i = 0; i < partes.Length; i++)
                 {
-                    nums.Add(int.Parse(partes[i]));
+                    numeros.Add(int.Parse(partes[i]));
                 }
+
                 List<int> pares = new List<int>();
-                foreach (int num in nums)
+                foreach (int numero in numeros)
                 {
-                    if (num % 2 == 0)
-                        pares.Add(num);
+                    if (numero % 2 == 0)
+                        pares.Add(numero);
                 }
                 Console.WriteLine("Números pares: " + string.Join(", ", pares));
             }
@@ -313,12 +345,14 @@
             {
                 Console.Write("Digite os elementos separados por espaço: ");
                 string[] elementos = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
                 Console.Write("Digite o elemento para contar: ");
                 string elementoProcurado = Console.ReadLine();
+
                 int count = 0;
-                foreach (string el in elementos)
+                foreach (string elemento in elementos)
                 {
-                    if (el == elementoProcurado)
+                    if (elemento == elementoProcurado)
                         count++;
                 }
                 Console.WriteLine($"O elemento '{elementoProcurado}' aparece {count} vezes.");
@@ -334,10 +368,11 @@
         {
             try
             {
-                Console.Write("Digite uma string: ");
-                string str = Console.ReadLine();
+                Console.Write("Digite um texto: ");
+                string texto = Console.ReadLine();
+
                 string resultado = "";
-                foreach (char c in str)
+                foreach (char c in texto)
                 {
                     if (char.IsUpper(c))
                         resultado += char.ToLower(c);
@@ -346,7 +381,7 @@
                     else
                         resultado += c;
                 }
-                Console.WriteLine("String com alternância de maiúsculas e minúsculas: " + resultado);
+                Console.WriteLine("Texto com alternância de maiúsculas e minúsculas: " + resultado);
             }
             catch (Exception ex)
             {
@@ -360,14 +395,15 @@
             try
             {
                 Console.Write("Digite o número de termos da série de Fibonacci: ");
-                int n = int.Parse(Console.ReadLine());
-                if (n <= 0)
+                int numero = int.Parse(Console.ReadLine());
+                if (numero <= 0)
                 {
                     Console.WriteLine("O número de termos deve ser maior que 0.");
                     return;
                 }
+
                 List<long> fibonacci = new List<long>();
-                for (int i = 0; i < n; i++)
+                for (int i = 0; i < numero; i++)
                 {
                     if (i == 0)
                         fibonacci.Add(0);
@@ -410,30 +446,33 @@
             try
             {
                 Console.Write("Digite o primeiro número: ");
-                double a = double.Parse(Console.ReadLine());
+                double numero1 = double.Parse(Console.ReadLine());
+
                 Console.Write("Digite o operador (+, -, *, /): ");
-                string op = Console.ReadLine();
+                string operador = Console.ReadLine();
+
                 Console.Write("Digite o segundo número: ");
-                double b = double.Parse(Console.ReadLine());
+                double numero2 = double.Parse(Console.ReadLine());
+
                 double resultado = 0;
-                switch (op)
+                switch (operador)
                 {
                     case "+":
-                        resultado = a + b;
+                        resultado = numero1 + numero2;
                         break;
                     case "-":
-                        resultado = a - b;
+                        resultado = numero1 - numero2;
                         break;
                     case "*":
-                        resultado = a * b;
+                        resultado = numero1 * numero2;
                         break;
                     case "/":
-                        if (b == 0)
+                        if (numero2 == 0)
                         {
                             Console.WriteLine("Divisão por zero não é permitida.");
                             return;
                         }
-                        resultado = a / b;
+                        resultado = numero1 / numero2;
                         break;
                     default:
                         Console.WriteLine("Operador inválido.");
@@ -453,22 +492,23 @@
             try
             {
                 Console.Write("Digite um número: ");
-                int num = int.Parse(Console.ReadLine());
-                bool isPrimo = true;
-                if (num <= 1)
-                    isPrimo = false;
+                int numero = int.Parse(Console.ReadLine());
+
+                bool ehPrimo = true;
+                if (numero <= 1)
+                    ehPrimo = false;
                 else
                 {
-                    for (int i = 2; i <= Math.Sqrt(num); i++)
+                    for (int i = 2; i * i <= numero; i++)
                     {
-                        if (num % i == 0)
+                        if (numero % i == 0)
                         {
-                            isPrimo = false;
+                            ehPrimo = false;
                             break;
                         }
                     }
                 }
-                Console.WriteLine(isPrimo ? "true" : "false");
+                Console.WriteLine(ehPrimo ? "true" : "false");
             }
             catch (Exception ex)
             {
@@ -482,14 +522,16 @@
             try
             {
                 Console.Write("Digite o número de termos da sequência de Fibonacci: ");
-                int n = int.Parse(Console.ReadLine());
-                if (n <= 0)
+                int numero = int.Parse(Console.ReadLine());
+
+                if (numero <= 0)
                 {
                     Console.WriteLine("O número de termos deve ser maior que 0.");
                     return;
                 }
+
                 List<long> fibonacci = new List<long>();
-                for (int i = 0; i < n; i++)
+                for (int i = 0; i < numero; i++)
                 {
                     if (i == 0)
                         fibonacci.Add(0);
@@ -512,20 +554,23 @@
             try
             {
                 Console.Write("Digite um número inteiro: ");
-                int num = int.Parse(Console.ReadLine());
-                int count = 0;
-                int temp = Math.Abs(num);
+                int numero = int.Parse(Console.ReadLine());
+
+                int quantidade = 0;
+                int temp = (numero < 0) ? -numero : numero;
+
                 if (temp == 0)
-                    count = 1;
+                    quantidade = 1;
                 else
                 {
                     while (temp > 0)
                     {
-                        count++;
+                        quantidade++;
                         temp /= 10;
                     }
                 }
-                Console.WriteLine($"O número {num} tem {count} dígito(s).");
+
+                Console.WriteLine($"O número {numero} tem {quantidade} dígito(s).");
             }
             catch (Exception ex)
             {
@@ -539,12 +584,15 @@
             try
             {
                 Console.Write("Digite o primeiro número: ");
-                double a = double.Parse(Console.ReadLine());
+                double numero1 = double.Parse(Console.ReadLine());
+
                 Console.Write("Digite o segundo número: ");
-                double b = double.Parse(Console.ReadLine());
+                double numero2 = double.Parse(Console.ReadLine());
+
                 Console.Write("Digite o terceiro número: ");
-                double c = double.Parse(Console.ReadLine());
-                double media = (a + b + c) / 3;
+                double numero3 = double.Parse(Console.ReadLine());
+
+                double media = (numero1 + numero2 + numero3) / 3;
                 Console.WriteLine($"A média dos números é: {media}");
             }
             catch (Exception ex)
