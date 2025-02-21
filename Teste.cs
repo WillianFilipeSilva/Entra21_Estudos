@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ExerciciosCSharp.ExerciciosLogica;
+﻿using ExerciciosCSharp.ExerciciosLogica;
 
 namespace ExerciciosCSharp
 {
@@ -32,6 +27,10 @@ namespace ExerciciosCSharp
                 //Funções
                 Funcoes funcoes = new();
                 //funcoes.Executar();
+
+                //Vetores e Listas
+                VetoresEListas vetoresEListas = new();
+                vetoresEListas.Executar();
             }
             catch (Exception ex)
             {
