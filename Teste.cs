@@ -30,7 +30,15 @@ namespace ExerciciosCSharp
 
                 //Vetores e Listas
                 VetoresEListas vetoresEListas = new();
-                vetoresEListas.Executar();
+                //vetoresEListas.Executar();
+
+                //Exercicios de Matrizes
+                Matrizes matrizes = new();
+                matrizes.Executar();
+
+                //Exercicios de Funções
+                Recursividade recursividade = new();
+                //recursividade.Executar();
             }
             catch (Exception ex)
             {
