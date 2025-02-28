@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace ExerciciosCSharp.ExerciciosLogica
+﻿namespace ExerciciosCSharp.ExerciciosLogica
 {
     public class EstruturasDeRepeticaoWhileDoWhile : Base
     {

@@ -1,111 +1,44 @@
 ﻿namespace ExerciciosCSharp.ExerciciosLogica
 {
-    public class Variaveis
+    public class Variaveis : Base
     {
-        public void Executar()
+        public override void Executar()
         {
-            int opcao = -1;
-
-            while (opcao != 0)
+            try
             {
-                Console.WriteLine("Selecione o exercício que deseja executar:");
-                Console.WriteLine("1. Imprimir um número inteiro");
-                Console.WriteLine("2. Exibir mensagem de boas-vindas ao curso");
-                Console.WriteLine("3. Somar dois números double");
-                Console.WriteLine("4. Calcular o quadrado de um número inteiro");
-                Console.WriteLine("5. Verificar se um número é par ou ímpar");
-                Console.WriteLine("6. Exibir o maior de dois números inteiros");
-                Console.WriteLine("7. Verificar se a soma de dois números é maior que 100");
-                Console.WriteLine("8. Converter double para int");
-                Console.WriteLine("9. Calcular o cubo de um número");
-                Console.WriteLine("10. Verificar se um número é múltiplo de 3 e 5");
-                Console.WriteLine("11. Verificar se é maior de idade");
-                Console.WriteLine("12. Converter Celsius para Fahrenheit");
-                Console.WriteLine("13. Calcular a média aritmética de três números");
-                Console.WriteLine("14. Calcular aumento de 10% no salário");
-                Console.WriteLine("15. Concatenar strings para formar uma frase");
-                Console.WriteLine("16. Converter número decimal para inteiro");
-                Console.WriteLine("17. Verificar se um número está entre 1 e 100");
-                Console.WriteLine("18. Contar os Caracteres de um texto");
-                Console.WriteLine("19. Verificar se dois textos são iguais");
-                Console.WriteLine("0. Sair");
-                Console.Write("Digite a opção desejada: ");
-
-                opcao = int.Parse(Console.ReadLine());
-
-                switch (opcao)
+                lista = new Dictionary<int, (string, Action)>
                 {
-                    case 1:
-                        Exercicio1();
-                        break;
-                    case 2:
-                        Exercicio2();
-                        break;
-                    case 3:
-                        Exercicio3();
-                        break;
-                    case 4:
-                        Exercicio4();
-                        break;
-                    case 5:
-                        Exercicio5();
-                        break;
-                    case 6:
-                        Exercicio6();
-                        break;
-                    case 7:
-                        Exercicio7();
-                        break;
-                    case 8:
-                        Exercicio8();
-                        break;
-                    case 9:
-                        Exercicio9();
-                        break;
-                    case 10:
-                        Exercicio10();
-                        break;
-                    case 11:
-                        Exercicio11();
-                        break;
-                    case 12:
-                        Exercicio12();
-                        break;
-                    case 13:
-                        Exercicio13();
-                        break;
-                    case 14:
-                        Exercicio14();
-                        break;
-                    case 15:
-                        Exercicio15();
-                        break;
-                    case 16:
-                        Exercicio16();
-                        break;
-                    case 17:
-                        Exercicio16();
-                        break;
-                    case 18:
-                        Exercicio17();
-                        break;
-                    case 19:
-                        Exercicio19();
-                        break;
-                    case 0:
-                        Console.WriteLine("Encerrando o programa.");
-                        break;
-                    default:
-                        Console.WriteLine("Opção inválida. Tente novamente.");
-                        break;
-                }
+                    { 1, ("Imprimir um número inteiro", Exercicio1) },
+                    { 2, ("Exibir mensagem de boas-vindas ao curso", Exercicio2) },
+                    { 3, ("Somar dois números double", Exercicio3) },
+                    { 4, ("Calcular o quadrado de um número inteiro", Exercicio4) },
+                    { 5, ("Verificar se um número é par ou ímpar", Exercicio5) },
+                    { 6, ("Exibir o maior de dois números inteiros", Exercicio6) },
+                    { 7, ("Verificar se a soma de dois números é maior que 100", Exercicio7) },
+                    { 8, ("Converter double para int", Exercicio8) },
+                    { 9, ("Calcular o cubo de um número", Exercicio9) },
+                    { 10, ("Verificar se um número é múltiplo de 3 e 5", Exercicio10) },
+                    { 11, ("Verificar se é maior de idade", Exercicio11) },
+                    { 12, ("Converter Celsius para Fahrenheit", Exercicio12) },
+                    { 13, ("Calcular a média aritmética de três números", Exercicio13) },
+                    { 14, ("Calcular aumento de 10% no salário", Exercicio14) },
+                    { 15, ("Concatenar strings para formar uma frase", Exercicio15) },
+                    { 16, ("Converter número decimal para inteiro", Exercicio16) },
+                    { 17, ("Verificar se um número está entre 1 e 100", Exercicio17) },
+                    { 18, ("Contar os Caracteres de um texto", Exercicio18) },
+                    { 19, ("Verificar se dois textos são iguais", Exercicio19) },
+                };
 
-                Console.WriteLine();
+                Menu(lista);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro na execução do menu: {ex.Message}");
             }
         }
 
         //1.  Declare uma variável do tipo int, atribua um valor e imprima na tela.
-        public void Exercicio1()
+        public override void Exercicio1()
         {
             int _NumeroInteiro;
             _NumeroInteiro = 1;
@@ -113,14 +46,14 @@
         }
 
         //2.  Crie uma variável string com o nome do seu curso e exiba a mensagem: “Bem-vindo ao curso[nome]”.
-        public void Exercicio2()
+        public override void Exercicio2()
         {
             string nomeCurso = "Csharp";
             Console.WriteLine($"Bem-Vindo ao {nomeCurso}!");
         }
 
         //3.  Declare duas variáveis do tipo double, atribua valores e exiba a soma.
-        public void Exercicio3()
+        public override void Exercicio3()
         {
             double valorDouble = 1.0;
             double valorDouble1 = 2.0;
@@ -130,7 +63,7 @@
         }
 
         //4.  Leia um número inteiro do usuário e exiba o quadrado desse número.
-        public void Exercicio4()
+        public override void Exercicio4()
         {
             int _NumeroInteiro;
             Console.WriteLine("Digite um número inteiro para calcular o quadrado dele:");
@@ -141,7 +74,7 @@
         }
 
         //5.  Verifique se um número inteiro lido do teclado é par ou ímpar.
-        public void Exercicio5()
+        public override void Exercicio5()
         {
             int _NumeroInteiro;
             Console.WriteLine("Digite um número inteiro para testar se é par ou ímpar:");
@@ -162,7 +95,7 @@
         }
 
         //6.  Leia dois números inteiros e exiba o maior deles.
-        public void Exercicio6()
+        public override void Exercicio6()
         {
             int _NumeroInteiro;
             int _NumeroInteiro1;
@@ -181,7 +114,7 @@
         }
 
         //7.  Crie uma variável booleana que indica se a soma de dois números é maior que 100.
-        public void Exercicio7()
+        public override void Exercicio7()
         {
             bool maiorQue100 = false;
 
@@ -200,7 +133,7 @@
         }
 
         //8.  Converta uma variável double para int e exiba o valor antes e depois da conversão.
-        public void Exercicio8()
+        public override void Exercicio8()
         {
             double numeroDouble = 1.0;
             Console.WriteLine($"Número Double: {numeroDouble}");
@@ -210,7 +143,7 @@
         }
 
         //9.  Declare uma variável e calcule a variável ao cubo.
-        public void Exercicio9()
+        public override void Exercicio9()
         {
             int _NumeroInteiro = 3;
             int cuboNumeroCubo = _NumeroInteiro * _NumeroInteiro * _NumeroInteiro;
@@ -218,7 +151,7 @@
         }
 
         //10. Crie uma expressão que verifica se um número é múltiplo de 5 e de 3 ao mesmo tempo.
-        public void Exercicio10()
+        public override void Exercicio10()
         {
             int _NumeroInteiro = 15;
             if (_NumeroInteiro % 3 == 0 && _NumeroInteiro % 5 == 0)
@@ -232,7 +165,7 @@
         }
 
         //11. Leia uma idade e exiba uma mensagem informando se é maior de idade.
-        public void Exercicio11()
+        public override void Exercicio11()
         {
             int _NumeroInteiro;
             Console.WriteLine("Digite sua idade:");
@@ -249,7 +182,7 @@
         }
 
         //12. Leia um valor em graus Celsius e converta para Fahrenheit.
-        public void Exercicio12()
+        public override void Exercicio12()
         {
             double numeroDouble;
             Console.WriteLine("Digite a temperatura em Celsius:");
@@ -260,7 +193,7 @@
         }
 
         //13. Crie um programa que recebe três números e exibe a média aritmética.
-        public void Exercicio13()
+        public override void Exercicio13()
         {
             int _NumeroInteiro;
             int _NumeroInteiro1;
@@ -275,7 +208,7 @@
         }
 
         //14. Declare uma variável que representa um salário e calcule um aumento de 10%.
-        public void Exercicio14()
+        public override void Exercicio14()
         {
             double numeroDouble = 1518.00;
 
@@ -284,7 +217,7 @@
         }
 
         //15. Crie uma variável do tipo string e concatene com outra variável para formar uma frase.
-        public void Exercicio15()
+        public override void Exercicio15()
         {
             string nomeAluno = "Willian Filipe Silva";
             string nomeCurso = "Csharp";
@@ -294,7 +227,7 @@
         }
 
         //16. Crie um programa que leia um número decimal e converta para inteiro.
-        public void Exercicio16()
+        public override void Exercicio16()
         {
             Console.WriteLine("Digite um número decimal:");
             float numeroFloat = float.Parse(Console.ReadLine());
@@ -304,7 +237,7 @@
         }
 
         //17. Verifique se um número fornecido pelo usuário está entre 1 e 100.
-        public void Exercicio17()
+        public override void Exercicio17()
         {
             int _NumeroInteiro;
             Console.WriteLine("Digite um número inteiro para verificar se está entre 1 e 100:");
@@ -320,7 +253,7 @@
             }
         }
         //18. Leia um texto e exiba o número de caracteres usando Length.
-        public void Exercicio18()
+        public override void Exercicio18()
         {
             Console.WriteLine("Digite um texto para contarmos os caracteres");
             string texto = Console.ReadLine();
@@ -329,7 +262,7 @@
         }
 
         //19. Receba duas strings e compare se elas são iguais, ignorando maiúsculas e minúsculas.
-        public void Exercicio19()
+        public override void Exercicio19()
         {
             Console.WriteLine("Digite dois textos para compararmos se são iguais");
             string texto = Console.ReadLine();

@@ -1,5 +1,4 @@
-﻿
-namespace ExerciciosCSharp.ExerciciosLogica
+﻿namespace ExerciciosCSharp.ExerciciosLogica
 {
     public class Matrizes : Base
     {
