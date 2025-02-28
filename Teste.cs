@@ -34,11 +34,11 @@ namespace ExerciciosCSharp
 
                 //Exercicios de Matrizes
                 Matrizes matrizes = new();
-                matrizes.Executar();
+                //matrizes.Executar();
 
                 //Exercicios de Funções
                 Recursividade recursividade = new();
-                //recursividade.Executar();
+                recursividade.Executar();
             }
             catch (Exception ex)
             {
