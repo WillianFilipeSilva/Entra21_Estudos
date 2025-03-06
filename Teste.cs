@@ -1,4 +1,8 @@
 ﻿using ExerciciosCSharp.ExerciciosLogica;
+using ExerciciosCSharp.ExerciciosPOO.Objetos.Item;
+using ExerciciosCSharp.ExerciciosPOO.Objetos.Pedido;
+using ExerciciosCSharp.ExerciciosPOO.Objetos.Produto;
+using ExerciciosCSharp.ExerciciosPOO.Principal;
 
 namespace ExerciciosCSharp
 {
@@ -38,11 +42,18 @@ namespace ExerciciosCSharp
 
                 //Exercicios de Funções
                 Recursividade recursividade = new();
-                recursividade.Executar();
+                //recursividade.Executar();
+
+                //---------------------------\\
+
+                //ExerciciosPOO
+                Lanchonete lanchonete = new();
+                lanchonete.Executar();
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                Console.WriteLine($"ERRO: {ex.Message}");
+                Console.WriteLine($"Houve um erro na excecução: {e}");
+                Console.WriteLine($"Houve um erro na excecução: {e.Message}");
             }
         }
     }
