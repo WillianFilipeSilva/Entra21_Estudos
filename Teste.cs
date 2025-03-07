@@ -52,7 +52,6 @@ namespace ExerciciosCSharp
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Houve um erro na excecução: {e}");
                 Console.WriteLine($"Houve um erro na excecução: {e.Message}");
             }
         }

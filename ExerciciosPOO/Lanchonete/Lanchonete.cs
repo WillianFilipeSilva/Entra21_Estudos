@@ -1,11 +1,6 @@
 ﻿using ExerciciosCSharp.ExerciciosPOO.Objetos.Item;
 using ExerciciosCSharp.ExerciciosPOO.Objetos.Pedido;
 using ExerciciosCSharp.ExerciciosPOO.Objetos.Produto;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExerciciosCSharp.ExerciciosPOO.Principal
 {
@@ -13,112 +8,143 @@ namespace ExerciciosCSharp.ExerciciosPOO.Principal
     {
         public void Executar()
         {
-            var  Cardapio = new Dictionary<int, Produto>()
+            var cardapio = new List<Produto>()
             {
-                { 1, new("X-Burguer", 12.00) },
-                { 2, new("X-Salada", 14.00) },
-                { 3, new("X-Bacon", 16.00) },
-                { 4, new("X-Tudo", 20.00) },
-                { 5, new("X-Frango", 15.00) },
-                { 6, new("Hambúrguer simples", 10.00) },
-                { 7, new("Cheeseburguer", 11.50) },
-
-                { 8, new("Batata frita pequena", 8.00) },
-                { 9, new("Batata frita média", 12.00) },
-                { 10, new("Batata frita grande", 16.00) },
-
-                { 11, new("Refrigerante lata", 6.00) },
-                { 12, new("Refrigerante 600ml", 8.00) },
-                { 13, new("Suco natural", 10.00) },
-                { 14, new("Água", 4.00) },
-
-                { 15, new("Milkshake pequeno", 10.00) },
-                { 16, new("Milkshake médio", 14.00) },
-                { 17, new("Milkshake grande", 18.00) }
+                new(1, "X-Burguer", 12.00),
+                new(2, "X-Salada", 14.00),
+                new(3, "X-Bacon", 16.00),
+                new(5, "X-Frango", 15.00),
+                new(6, "Hambúrguer simples", 10.00),
+                new(7, "Cheeseburguer", 11.50),
+                new(8, "Batata frita pequena", 8.00),
+                new(9, "Batata frita média", 12.00),
+                new(10, "Batata frita grande", 16.00),
+                new(11, "Refrigerante lata", 6.00),
+                new(12, "Refrigerante 600ml", 8.00),
+                new(13, "Suco natural", 10.00),
+                new(14, "Água", 4.00),
+                new(15, "Milkshake pequeno", 10.00),
+                new(16, "Milkshake médio", 14.00),
+                new(17, "Milkshake grande", 18.00)
             };
 
-            var carrinho = AdicionarItemsNoCarrinho(Cardapio);
+            var carrinho = AdicionarItemsNoCarrinho(cardapio);
 
-            Pedido pedido1 = new(1);
-            pedido1.InserirProdutos(carrinho);
-
-            Console.WriteLine($"O preço do seu pedido é: {pedido1.PrecoTotal}R$");
+            if (carrinho.Count > 0)
+            {
+                Pedido pedido = new(1);
+                pedido.InserirProdutos(carrinho);
+                Console.WriteLine($"O preço do seu pedido é: {pedido.PrecoTotal:C}");
+            }
+            else
+            {
+                Console.WriteLine("Nenhum pedido foi realizado.");
+            }
         }
 
-        private static void ExibirCardapio(Dictionary<int, Produto> cardapio)
+        private static void ExibirCardapio(List<Produto> cardapio)
         {
-            Console.WriteLine("<---------------- Cardápio ---------------->");
-
-            foreach (var item in cardapio)
+            Console.WriteLine("\n<---------------- Cardápio ---------------->");
+            foreach (var produto in cardapio)
             {
-                Console.WriteLine($"{item.Key} - {item.Value.Nome} - {item.Value.Preco}R$");
+                Console.WriteLine($"{produto.Id} - {produto.Nome} - {produto.Preco:C}");
+            }
+            Console.WriteLine("<----------------    <3    ---------------->\n");
+        }
+
+        private static List<Item> AdicionarItemsNoCarrinho(List<Produto> cardapio)
+        {
+            ExibirCardapio(cardapio);
+            var carrinho = new List<Item>();
+
+            while (true)
+            {
+                Console.Write("Digite a opção do produto (0 para finalizar, -1 para remover produto): ");
+                if (!int.TryParse(Console.ReadLine(), out int opcao))
+                {
+                    Console.WriteLine("Entrada inválida! Digite um número válido.");
+                    continue;
+                }
+
+                if (opcao == 0)
+                    break;
+
+                if (opcao == -1)
+                {
+                    carrinho = RemoverQuantidadeOuItemDoCarrinho(carrinho);
+                    continue;
+                }
+
+                var produto = cardapio.FirstOrDefault(p => p.Id == opcao);
+                if (produto == null)
+                {
+                    Console.WriteLine("Opção inválida! Escolha um item do cardápio.");
+                    continue;
+                }
+
+                Console.Write($"Digite a quantidade de {produto.Nome}: ");
+                if (!int.TryParse(Console.ReadLine(), out int quantidade) || quantidade <= 0)
+                {
+                    Console.WriteLine("Quantidade inválida! Digite um número positivo.");
+                    continue;
+                }
+
+                var item = carrinho.FirstOrDefault(i => i.Produto.Id == produto.Id);
+                if (item == null)
+                    carrinho.Add(new Item(produto, quantidade));
+                else
+                    item.Quantidade += quantidade;
+
+                Console.WriteLine($"Adicionado {quantidade} unidades de {produto.Nome} ao carrinho.");
             }
 
-            Console.WriteLine("<----------------    <3    ---------------->");
+            if (carrinho.Count == 0)
+                Console.WriteLine("Nenhum item foi adicionado ao carrinho.");
+
+            return carrinho;
         }
 
-        private static List<Item> AdicionarItemsNoCarrinho(Dictionary<int, Produto> cardapio)
+        private static List<Item> RemoverQuantidadeOuItemDoCarrinho(List<Item> carrinho)
         {
-            try
+            if (carrinho.Count == 0)
             {
-                ExibirCardapio(cardapio);
-
-                var carrinho = new List<Item>();
-
-                var opcao = -2;
-                while (opcao != 0 || opcao == -1)
-                {
-                    Console.Write("Digite a opção do produto, 0 para finalizar, ou -1 para remover produto ou quantidade adicionado: ");
-                    opcao = int.Parse(Console.ReadLine());
-
-                    if (opcao == -1)
-                    {
-                        Console.Write("Digite a opção do produto que deseja remover: ");
-                        opcao = int.Parse(Console.ReadLine());
-
-                        if (carrinho.Contains(item: carrinho[opcao - 1]))
-                        {
-                            Console.WriteLine($"Tem {carrinho[opcao - 1].Quantidade} unidades no carrinho, digite a quantidade que deseja remover, ou digite 0 para remover tudo: ");
-                            var quantidade = int.Parse(Console.ReadLine());
-
-                            if (quantidade < carrinho[opcao - 1].Quantidade)
-                            {
-                                Console.WriteLine($"Removido {quantidade} unidades de {carrinho[opcao - 1].Produto.Nome} do carrinho.");
-                                carrinho[opcao - 1].Quantidade -= quantidade;
-                            }
-                            else
-                            {
-                                if(quantidade == carrinho[opcao - 1].Quantidade)
-                                {
-                                    Console.WriteLine($"Removido {carrinho[opcao - 1].Produto.Nome} do carrinho.");
-                                } 
-                                else
-                                {
-                                    Console.WriteLine($"A quantidade digitara é maior que a do carrinho, removido {carrinho[opcao - 1].Produto.Nome} do carrinho. ");
-                                }
-                                 carrinho.RemoveAt(opcao - 1);
-                            }
-                        } 
-                    }
-                    else if (opcao != 0)
-                    {
-                        Console.WriteLine($"Digite a quantidade de {cardapio[opcao].Nome}: ");
-                        var quantidade = int.Parse(Console.ReadLine());
-
-                        carrinho.Add(new Item(cardapio[opcao], quantidade));
-
-                        Console.WriteLine($"Adicionado {quantidade} unidades de {cardapio[opcao].Nome} no carrinho.");
-                    }
-                }
-                if (carrinho.Count == 0)
-                    throw new Exception("Nenhum item foi adicionado ao carrinho.");
-
+                Console.WriteLine("O carrinho está vazio! Nada para remover.");
                 return carrinho;
             }
-            catch (Exception e)
+
+            Console.Write("Digite a opção do produto que deseja remover: ");
+            if (!int.TryParse(Console.ReadLine(), out int opcao))
             {
-                throw new Exception($"Ocorreu um erro ao adicionar os itens no carrinho: {e}");
+                Console.WriteLine("Entrada inválida! Digite um número válido.");
+                return carrinho;
             }
+
+            var item = carrinho.FirstOrDefault(i => i.Produto.Id == opcao);
+            if (item == null)
+            {
+                Console.WriteLine("Este item não está no carrinho.");
+                return carrinho;
+            }
+
+            Console.Write($"Tem {item.Quantidade} unidades no carrinho. Digite a quantidade para remover (0 para remover tudo): ");
+            if (!int.TryParse(Console.ReadLine(), out int quantidade) || quantidade < 0)
+            {
+                Console.WriteLine("Quantidade inválida! Digite um número válido.");
+                return carrinho;
+            }
+
+            if (quantidade == 0 || quantidade >= item.Quantidade)
+            {
+                carrinho.Remove(item);
+                Console.WriteLine($"Removido {item.Produto.Nome} do carrinho.");
+            }
+            else
+            {
+                item.Quantidade -= quantidade;
+                Console.WriteLine($"Removido {quantidade} unidades de {item.Produto.Nome}. Restam {item.Quantidade} unidades.");
+            }
+
+            return carrinho;
         }
     }
 }
