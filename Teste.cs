@@ -1,7 +1,4 @@
 ﻿using ExerciciosCSharp.ExerciciosLogica;
-using ExerciciosCSharp.ExerciciosPOO.Objetos.Item;
-using ExerciciosCSharp.ExerciciosPOO.Objetos.Pedido;
-using ExerciciosCSharp.ExerciciosPOO.Objetos.Produto;
 using ExerciciosCSharp.ExerciciosPOO.Principal;
 
 namespace ExerciciosCSharp

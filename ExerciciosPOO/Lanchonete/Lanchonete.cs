@@ -1,6 +1,6 @@
-﻿using ExerciciosCSharp.ExerciciosPOO.Objetos.Item;
-using ExerciciosCSharp.ExerciciosPOO.Objetos.Pedido;
-using ExerciciosCSharp.ExerciciosPOO.Objetos.Produto;
+﻿using ExerciciosCSharp.ExerciciosPOO.Lanchonete.Objetos.Item;
+using ExerciciosCSharp.ExerciciosPOO.Lanchonete.Objetos.Pedido;
+using ExerciciosCSharp.ExerciciosPOO.Lanchonete.Objetos.Produto;
 
 namespace ExerciciosCSharp.ExerciciosPOO.Principal
 {
@@ -38,7 +38,7 @@ namespace ExerciciosCSharp.ExerciciosPOO.Principal
             }
             else
             {
-                Console.WriteLine("Nenhum pedido foi realizado.");
+                Console.WriteLine("O Carrinho está vazio! Nenhum pedido foi realizado.");
             }
         }
 

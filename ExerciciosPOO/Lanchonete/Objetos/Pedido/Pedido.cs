@@ -1,4 +1,4 @@
-﻿namespace ExerciciosCSharp.ExerciciosPOO.Objetos.Pedido
+﻿namespace ExerciciosCSharp.ExerciciosPOO.Lanchonete.Objetos.Pedido
 {
     public class Pedido
     {
@@ -19,7 +19,7 @@
             foreach (var item in items)
             {
                 Console.WriteLine($"Adicionado {item.Quantidade} de {item.Produto.Nome} ao pedido.");
-                this.Produtos.Add(item);
+                Produtos.Add(item);
             }
         }
     }

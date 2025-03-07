@@ -1,4 +1,4 @@
-﻿namespace ExerciciosCSharp.ExerciciosPOO.Objetos.Item
+﻿namespace ExerciciosCSharp.ExerciciosPOO.Lanchonete.Objetos.Item
 {
     public class Item
     {
@@ -12,9 +12,9 @@
 
         public Item(Produto.Produto produto, int quantidade)
         {
-            this.id = produto.Id;
-            this.Produto = produto;
-            this.Quantidade = quantidade;
+            id = produto.Id;
+            Produto = produto;
+            Quantidade = quantidade;
         }
     }
 }
