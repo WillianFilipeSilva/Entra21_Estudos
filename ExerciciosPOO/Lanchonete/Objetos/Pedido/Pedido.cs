@@ -16,11 +16,23 @@
 
         public void InserirProdutos(List<Item.Item> items)
         {
+            Console.WriteLine($"\n<------------------ Pedido {Numero} ------------------>\n");
             foreach (var item in items)
             {
                 Console.WriteLine($"Adicionado {item.Quantidade} de {item.Produto.Nome} ao pedido.");
                 Produtos.Add(item);
             }
+            Console.WriteLine("");
+        }
+
+        public void ExibirItems()
+        {
+            foreach (var item in Produtos)
+            {
+                Console.WriteLine($"Pedido {Numero} - {item.Quantidade} de {item.Produto.Nome} - {item.Preco:f2}R$");
+            }
+            Console.WriteLine($"\nO preço total do seu pedido é: {PrecoTotal:f2}R$\n");
+            Console.WriteLine("<---------------------------------------------->\n");
         }
     }
 }
