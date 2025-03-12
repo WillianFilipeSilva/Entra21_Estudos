@@ -6,9 +6,9 @@ namespace ExerciciosCSharp.ExerciciosPOO.Principal
 {
     public class Lanchonete
     {
-        readonly List<Pedido> pedidosRealizados = new();
+        public static List<Pedido> pedidosRealizados = new();
 
-        readonly List<Produto> cardapio = new()
+        public static List<Produto> cardapio = new()
         {
             new(1, "X-Burguer", 12.00),
             new(2, "X-Salada", 14.00),
