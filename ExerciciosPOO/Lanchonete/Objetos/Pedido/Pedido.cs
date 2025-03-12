@@ -16,10 +16,10 @@
 
         public void InserirProdutos(List<Item.Item> items)
         {
-            Console.WriteLine($"\n<------------------ Pedido {Numero} ------------------>\n");
+            Console.WriteLine($"Adicionando produtos ao Pedido {Numero}:");
             foreach (var item in items)
             {
-                Console.WriteLine($"Adicionado {item.Quantidade} de {item.Produto.Nome} ao pedido.");
+                Console.WriteLine($"Adicionado {item.Quantidade} unidades de {item.Produto.Nome}.");
                 Produtos.Add(item);
             }
             Console.WriteLine("");
@@ -27,11 +27,12 @@
 
         public void ExibirItems()
         {
+            Console.WriteLine($"\n<------------------ Pedido {Numero} ------------------>\n");
             foreach (var item in Produtos)
             {
-                Console.WriteLine($"Pedido {Numero} - {item.Quantidade} de {item.Produto.Nome} - {item.Preco:f2}R$");
+                Console.WriteLine($"Pedido {Numero} - {item.Quantidade} de {item.Produto.Nome} - {item.Preco:f2}R$.");
             }
-            Console.WriteLine($"\nO preço total do seu pedido é: {PrecoTotal:f2}R$\n");
+            Console.WriteLine($"\nO preço total do seu pedido é: {PrecoTotal:f2}R$.\n");
             Console.WriteLine("<---------------------------------------------->\n");
         }
     }

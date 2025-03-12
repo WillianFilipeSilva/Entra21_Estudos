@@ -2,7 +2,7 @@
 {
     public class Item
     {
-        public long id { get; set; }
+        public long Id { get; set; }
 
         public Produto.Produto Produto { get; set; }
 
@@ -12,7 +12,7 @@
 
         public Item(Produto.Produto produto, int quantidade)
         {
-            id = produto.Id;
+            Id = produto.Id;
             Produto = produto;
             Quantidade = quantidade;
         }

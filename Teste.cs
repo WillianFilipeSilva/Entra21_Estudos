@@ -5,7 +5,7 @@ namespace ExerciciosCSharp
 {
     public class Teste
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             try
             {

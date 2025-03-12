@@ -6,9 +6,9 @@ namespace ExerciciosCSharp.ExerciciosPOO.Principal
 {
     public class Lanchonete
     {
-        List<Pedido> pedidosRealizados = new();
+        readonly List<Pedido> pedidosRealizados = new();
 
-        List<Produto> cardapio = new()
+        readonly List<Produto> cardapio = new()
         {
             new(1, "X-Burguer", 12.00),
             new(2, "X-Salada", 14.00),
@@ -63,7 +63,7 @@ namespace ExerciciosCSharp.ExerciciosPOO.Principal
             Console.WriteLine("<----------------    <3    ---------------->\n");
         }
 
-        private static List<Item> AdicionarItemsNoCarrinho(List<Produto> cardapio)
+        private static List<Item> InserirItemsNoCarrinho(List<Produto> cardapio)
         {
             ExibirCardapio(cardapio);
             var carrinho = new List<Item>();
@@ -160,7 +160,7 @@ namespace ExerciciosCSharp.ExerciciosPOO.Principal
 
         private void CadastrarPedido(List<Produto> cardapio)
         {
-            var carrinho = AdicionarItemsNoCarrinho(cardapio);
+            var carrinho = InserirItemsNoCarrinho(cardapio);
 
             if (carrinho.Count > 0)
             {
