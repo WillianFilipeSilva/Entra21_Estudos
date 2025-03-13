@@ -15,7 +15,7 @@
                     { 5, ("Máximo Divisor Comum (MDC)", Exercicio5) }
                 };
 
-                Menu(lista);
+                ExibirMenu(lista);
             }
             catch (Exception ex)
             {

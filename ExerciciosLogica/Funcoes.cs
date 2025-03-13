@@ -30,7 +30,7 @@
                     { 20, ("Média de Três Números", Exercicio20) }
                 };
 
-                Menu(lista);
+                ExibirMenu(lista);
             }
             catch (Exception ex)
             {

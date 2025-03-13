@@ -6,7 +6,7 @@
 
         public virtual void Executar() { }
 
-        public virtual void Menu(Dictionary<int, (string, Action)> opcoes)
+        public virtual void ExibirMenu(Dictionary<int, (string, Action)> opcoes)
         {
             int opcao = -1;
 

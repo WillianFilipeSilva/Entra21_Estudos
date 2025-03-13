@@ -23,7 +23,7 @@
                     { 13, ("Contagem Regressiva", Exercicio13) },
                 };
 
-                Menu(lista);
+                ExibirMenu(lista);
             }
             catch (Exception ex)
             {

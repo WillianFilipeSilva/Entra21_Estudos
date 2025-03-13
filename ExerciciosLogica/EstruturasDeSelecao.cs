@@ -33,7 +33,7 @@
                     { 23, ("Classificar idade como criança, adolescente ou adulto", Exercicio23) },
                 };
 
-                Menu(lista);
+                ExibirMenu(lista);
             }
             catch (Exception ex)
             {

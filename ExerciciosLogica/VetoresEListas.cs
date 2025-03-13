@@ -24,7 +24,7 @@
                         { 14, ("Remova o primeiro e o último elemento de uma lista de números inteiros e exiba os valores restantes.", Exercicio14) },
                 };
 
-                Menu(lista);
+                ExibirMenu(lista);
             }
             catch (Exception ex)
             {

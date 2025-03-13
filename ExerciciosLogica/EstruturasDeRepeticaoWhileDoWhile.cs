@@ -20,7 +20,7 @@
                     { 10, ("Adivinhe o Número (Do While)", Exercicio10) }
                 };
 
-                Menu(lista);
+                ExibirMenu(lista);
             }
             catch (Exception ex)
             {

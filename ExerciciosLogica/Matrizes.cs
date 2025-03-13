@@ -27,7 +27,7 @@
                     { 10, ("Matriz Dinâmica", Exercicio10) }
                 };
 
-                Menu(lista);
+                ExibirMenu(lista);
             }
             catch (Exception ex)
             {

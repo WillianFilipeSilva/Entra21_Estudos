@@ -30,10 +30,46 @@ namespace ExerciciosCSharp.ExerciciosPOO.Principal
 
         public void Executar()
         {
+            Console.WriteLine("Digite a opção que voce deseja: ");
+
+            var opcao = -1;
+            while (opcao != 0)
+            {
+                Console.WriteLine("1 - Cadastrar pedido\n2 - Exibir pedido\n3 - Exibir todos os pedidos\n0 - Sair");
+                if (!int.TryParse(Console.ReadLine(), out opcao))
+                {
+                    Console.WriteLine("Opção inválida!");
+                    opcao = -1;
+                    Thread.Sleep(2000);
+                    continue;
+                }
+
+                switch (opcao)
+                {
+                    case 0:
+                        Console.WriteLine("Finalizando...");
+                        Thread.Sleep(2000);
+                        break;
+                    case 1:
+                        CadastrarPedido();
+                        break;
+                    case 2:
+                        ExibirPedido();
+                        break;
+                    case 3:
+                        ExibirPedidos();
+                        break;
+                    default:
+                        Console.WriteLine("Opção inválida!");
+                        Thread.Sleep(2000);
+                        continue;
+                }
+            }
+
             //Pedido 1
             //CadastrarPedido(cardapio);
             Pedido pedido1 = new(1);
-            pedido1.InserirProdutos(new List<Item>()
+            pedido1.InserirItems(new List<Item>()
             {
                 new Item(cardapio[0], 2),
                 new Item(cardapio[1], 1),
@@ -44,7 +80,7 @@ namespace ExerciciosCSharp.ExerciciosPOO.Principal
             //Pedido 2
             //CadastrarPedido(cardapio);
             Pedido pedido2 = new(2);
-            pedido2.InserirProdutos(new List<Item>()
+            pedido2.InserirItems(new List<Item>()
             {
                 new Item(cardapio[3], 2),
                 new Item(cardapio[4], 1),
@@ -53,7 +89,7 @@ namespace ExerciciosCSharp.ExerciciosPOO.Principal
             pedido2.ExibirItems();
         }
 
-        private static void ExibirCardapio(List<Produto> cardapio)
+        private static void ExibirCardapio()
         {
             Console.WriteLine("\n<---------------- Cardápio ---------------->");
             foreach (var produto in cardapio)
@@ -63,9 +99,50 @@ namespace ExerciciosCSharp.ExerciciosPOO.Principal
             Console.WriteLine("<----------------    <3    ---------------->\n");
         }
 
-        private static List<Item> InserirItemsNoCarrinho(List<Produto> cardapio)
+        private static void ExibirPedido(int? idPedido = null)
         {
-            ExibirCardapio(cardapio);
+            if (idPedido == null)
+            {
+                while (true)
+                {
+                    Console.WriteLine("Digite o ID do pedido que deseja exibir, ou 0 para voltar.");
+                    if (!int.TryParse(Console.ReadLine(), out var pedidoId))
+                    {
+                        Console.WriteLine("Entrada inválida! Digite um número válido.");
+                        Thread.Sleep(2000);
+                        continue;
+                    }
+
+                    if (pedidoId == 0)
+                        return;
+
+                    idPedido = pedidoId;
+                    break;
+                }
+            }
+            var pedido = pedidosRealizados.FirstOrDefault(p => p.Id == idPedido);
+            if (pedido == null)
+            {
+                Console.WriteLine($"Não foi encontrado nenhum pedido com o ID {idPedido}.");
+                Thread.Sleep(2000);
+                return;
+            }
+            pedido.ExibirItems();
+        }
+
+        private static void ExibirPedidos()
+        {
+        Console.WriteLine("\n<---------------- Pedidos ---------------->\n");
+        foreach (var pedido in pedidosRealizados)
+        {
+            ExibirPedido(pedido.Id);
+        }
+        Console.WriteLine("\n<----------------    <3    ---------------->");
+        }
+
+        private static List<Item> InserirItemsNoCarrinho()
+        {
+            ExibirCardapio();
             var carrinho = new List<Item>();
 
             while (true)
@@ -74,6 +151,7 @@ namespace ExerciciosCSharp.ExerciciosPOO.Principal
                 if (!int.TryParse(Console.ReadLine(), out int opcao))
                 {
                     Console.WriteLine("Entrada inválida! Digite um número válido.");
+                    Thread.Sleep(2000);
                     continue;
                 }
 
@@ -83,6 +161,7 @@ namespace ExerciciosCSharp.ExerciciosPOO.Principal
                 if (opcao == -1)
                 {
                     carrinho = RemoverQuantidadeOuItemDoCarrinho(carrinho);
+                    Thread.Sleep(2000);
                     continue;
                 }
 
@@ -90,6 +169,7 @@ namespace ExerciciosCSharp.ExerciciosPOO.Principal
                 if (produto == null)
                 {
                     Console.WriteLine("Opção inválida! Escolha um item do cardápio.");
+                    Thread.Sleep(2000);
                     continue;
                 }
 
@@ -97,6 +177,7 @@ namespace ExerciciosCSharp.ExerciciosPOO.Principal
                 if (!int.TryParse(Console.ReadLine(), out int quantidade) || quantidade <= 0)
                 {
                     Console.WriteLine("Quantidade inválida! Digite um número positivo.");
+                    Thread.Sleep(2000);
                     continue;
                 }
 
@@ -108,9 +189,6 @@ namespace ExerciciosCSharp.ExerciciosPOO.Principal
 
                 Console.WriteLine($"Adicionado {quantidade} unidades de {produto.Nome} ao carrinho.");
             }
-
-            if (carrinho.Count == 0)
-                Console.WriteLine("Nenhum item foi adicionado ao carrinho.");
 
             return carrinho;
         }
@@ -158,28 +236,26 @@ namespace ExerciciosCSharp.ExerciciosPOO.Principal
             return carrinho;
         }
 
-        private void CadastrarPedido(List<Produto> cardapio)
+        private void CadastrarPedido()
         {
-            var carrinho = InserirItemsNoCarrinho(cardapio);
-
-            if (carrinho.Count > 0)
+            var carrinho = InserirItemsNoCarrinho();
+            if (carrinho.Any())
             {
                 Pedido pedido = new(pedidosRealizados.Count + 1);
-                pedido.InserirProdutos(carrinho);
+                pedido.InserirItems(carrinho);
 
                 if (pedido.Produtos.Count == 0)
                 {
-                    Console.WriteLine($"Pedido {pedido.Numero} - Nenhum produto foi adicionado ao pedido.");
+                    Console.WriteLine($"Pedido {pedido.Id} - Nenhum produto foi adicionado ao pedido.");
                     return;
                 }
                 pedidosRealizados.Add(pedido);
 
                 pedido.ExibirItems();
+                return;
             }
-            else
-            {
-                Console.WriteLine("O Carrinho está vazio! Nenhum pedido foi realizado.");
-            }
+
+            Console.WriteLine("O Carrinho está vazio! Nenhum pedido foi realizado.");
         }
     }
 }

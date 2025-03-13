@@ -29,7 +29,7 @@
                     { 19, ("Verificar se dois textos são iguais", Exercicio19) },
                 };
 
-                Menu(lista);
+                ExibirMenu(lista);
             }
             catch (Exception ex)
             {
