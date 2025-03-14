@@ -1,5 +1,6 @@
 ﻿using ExerciciosCSharp.ExerciciosLogica;
 using ExerciciosCSharp.ExerciciosPOO.Principal;
+using ExerciciosCSharp.ExerciciosPOO.SistemaBancario;
 
 namespace ExerciciosCSharp
 {
@@ -41,11 +42,16 @@ namespace ExerciciosCSharp
                 Recursividade recursividade = new();
                 //recursividade.Executar();
 
+                        //ExerciciosPOO
                 //---------------------------\\
 
-                //ExerciciosPOO
+                //Lanchonete
                 Lanchonete lanchonete = new();
-                lanchonete.Executar();
+                //lanchonete.Executar();
+
+                //Sistema Bancário
+                SistemaBancario sistemaBancario = new();
+                sistemaBancario.Executar();
             }
             catch (Exception e)
             {
