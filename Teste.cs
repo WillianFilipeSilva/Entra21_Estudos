@@ -56,7 +56,7 @@ namespace ExerciciosCSharp
 
                 //Sistema Bancário Com interface
                 SistemaBancarioComInterface sistemaBancarioComInterface = new();
-                sistemaBancarioComInterface.Executar();
+                //sistemaBancarioComInterface.Executar();
             }
             catch (Exception e)
             {
