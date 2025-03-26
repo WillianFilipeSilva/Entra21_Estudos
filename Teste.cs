@@ -1,4 +1,5 @@
 ﻿using ExerciciosCSharp.ExerciciosLogica;
+using ExerciciosCSharp.ExerciciosPOO.BancoComInterface;
 using ExerciciosCSharp.ExerciciosPOO.Principal;
 using ExerciciosCSharp.ExerciciosPOO.SistemaBancario;
 
@@ -52,10 +53,14 @@ namespace ExerciciosCSharp
                 //Sistema Bancário
                 SistemaBancario sistemaBancario = new();
                 sistemaBancario.Executar();
+
+                //Sistema Bancário Com interface
+                SistemaBancarioComInterface sistemaBancarioComInterface = new();
+                sistemaBancarioComInterface.Executar();
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Houve um erro na excecução: {e.Message}");
+                Console.WriteLine($"Houve um erro na excecução: {e}");
             }
         }
     }

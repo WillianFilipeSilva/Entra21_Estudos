@@ -2,50 +2,68 @@
 {
     public class ContaBancaria
     {
-        private int numeroConta;
-        private string titular;
-        private double saldo;
+        private int _numeroConta;
+        private string _titular;
+        private double _saldo;
+        private double _taxaDeSaque;
+        private double _percentualBonusDepósito;
 
-        public int NumeroConta => numeroConta;
+        public int NumeroConta => _numeroConta;
+
         public string Titular
         {
-            get => titular;
-            set => titular = value;
+            get => _titular;
+            set => _titular = value;
         }
+
         public double Saldo
         {
-            get => saldo;
-            protected set => saldo = value;
+            get => _saldo;
+            protected set => _saldo = value;
+        }
+
+        public double TaxaDeSaque
+        {
+            get => _taxaDeSaque;
+            protected set => _taxaDeSaque = value;
+        }
+
+        public double PercentualBonusDeposito
+        {
+            get => _percentualBonusDepósito;
+            protected set => PercentualBonusDeposito = value;
         }
 
         public ContaBancaria(int numeroConta, string titular, double saldo)
         {
-            this.numeroConta = numeroConta;
-            this.titular = titular;
-            this.saldo = saldo;
+            this._numeroConta = numeroConta;
+            this._titular = titular;
+            this._saldo = saldo;
         }
 
-        public virtual void Depositar(double valor)
+        public double Depositar(double valor)
         {
-            Saldo += valor;
+            Saldo += (valor * (1 + PercentualBonusDeposito/100));
+            return Saldo;
         }
 
-        public virtual void Sacar(double valor)
+        public double Sacar(double valor)
         {
             if (Saldo >= valor)
             {
-                Saldo -= valor;
+                Saldo -= (valor + TaxaDeSaque);
+                return Saldo;
             }
             else
             {
                 Console.WriteLine($"Saldo insuficiente na conta: {NumeroConta} - {Titular}");
+                return Saldo;
             }
         }
 
         public void ExibirSaldo()
         {
-            var nomeConta = this.GetType().Name == "ContaCorrente"? "conta corrente" : "conta poupanca";
-            Console.WriteLine($"Saldo atual da {nomeConta}: - {Titular} | Saldo: R$: {Saldo:F2}");
+            Console.WriteLine($"Saldo atual da conta: {NumeroConta} - {Titular} | Saldo: R$: {Saldo:F2}");
         }
     }
 }
