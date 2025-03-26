@@ -1,5 +1,6 @@
 ﻿using ExerciciosCSharp.ExerciciosLogica;
 using ExerciciosCSharp.ExerciciosPOO.BancoComInterface;
+using ExerciciosCSharp.ExerciciosPOO.LoucadoraDeVeiculos;
 using ExerciciosCSharp.ExerciciosPOO.Principal;
 using ExerciciosCSharp.ExerciciosPOO.SistemaBancario;
 
@@ -52,11 +53,15 @@ namespace ExerciciosCSharp
 
                 //Sistema Bancário
                 SistemaBancario sistemaBancario = new();
-                sistemaBancario.Executar();
+                //sistemaBancario.Executar();
 
                 //Sistema Bancário Com interface
                 SistemaBancarioComInterface sistemaBancarioComInterface = new();
                 //sistemaBancarioComInterface.Executar();
+
+                //Loucadora de Veículos
+                LoucadoraDeVeiculos loucadoraDeVeiculos = new();
+                loucadoraDeVeiculos.Executar();
             }
             catch (Exception e)
             {

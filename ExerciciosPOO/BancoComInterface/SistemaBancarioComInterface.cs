@@ -1,5 +1,4 @@
 ﻿using ExerciciosCSharp.ExerciciosPOO.BancoComInterface.Interfaces;
-using ExerciciosCSharp.ExerciciosPOO.BancoComInterface.Objetos.ContaPoupanca;
 
 namespace ExerciciosCSharp.ExerciciosPOO.BancoComInterface
 {
