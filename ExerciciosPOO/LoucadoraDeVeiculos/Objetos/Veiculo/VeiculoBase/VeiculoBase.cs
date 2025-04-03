@@ -24,5 +24,10 @@ namespace ExerciciosCSharp.ExerciciosPOO.LoucadoraDeVeiculos.Objetos.Veiculo.Vei
         {
             throw new NotImplementedException();
         }
+
+        public virtual string GetDetalhes()
+        {
+            return $"Veículo: {this.Modelo} | Marca: {this.Marca} | Ano: {this.Ano}";
+        }
     }
 }

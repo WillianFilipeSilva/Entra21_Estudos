@@ -60,7 +60,7 @@ namespace ExerciciosCSharp
                 //sistemaBancarioComInterface.Executar();
 
                 //Loucadora de Veículos
-                LoucadoraDeVeiculos loucadoraDeVeiculos = new();
+                LocadoraDeVeiculos loucadoraDeVeiculos = new();
                 loucadoraDeVeiculos.Executar();
             }
             catch (Exception e)
